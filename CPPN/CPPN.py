@@ -1,3 +1,14 @@
+"""
+Simple CPPN Model that generates images in a while loop based
+off of user input. This model is a simple 4 layer feed-forward net that
+uses input about each pixel to output a pixel density.
+
+Input to network: x, y, radius from center, latent vector, random cosine value
+Output from network: single value between 0 and 1 representing pixel density (0: white, 1: black)
+
+@author Ryan Missel
+"""
+
 import torch
 import torch.nn as nn
 import numpy as np
@@ -73,10 +84,9 @@ def main():
     user input to generate CPPN images
     :return: None
     """
-    sentinel = None
-    while sentinel != "q":
+    while True:
         filename = input("Filename(q to quit): ")
-        if sentinel == "q":
+        if filename == "q":
             break
 
         width = int(input("Image width: "))
